@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={font.className}>
         <ModalProvider />
         <Navbar />
-        {children}
+        <main className="mt-10">{children}</main>
         <Footer />
       </body>
     </html>
