@@ -1,7 +1,7 @@
 import getBillboard from "@/actions/get-billboard"
 import getProducts from "@/actions/get-products"
 import { Billboard } from "@/components/billboard"
-import { ProudctList } from "@/components/product-list"
+import { ProductList } from "@/components/product-list"
 import { Container } from "@/components/ui/container"
 
 export const revalidate = 0
@@ -14,7 +14,7 @@ const Home = async ({}: Props) => {
       <div className="gap-y-8 pb-8">
         <Billboard data={billboards} />
         <div className=" flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-          <ProudctList title="Featured Products" items={products} />
+          <ProductList title="Featured Products" items={products} />
         </div>
       </div>
     </Container>

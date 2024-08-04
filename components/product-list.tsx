@@ -6,7 +6,7 @@ type Props = {
   title: string
   items: Product[]
 }
-export const ProudctList = ({ title, items }: Props) => {
+export const ProductList = ({ title, items }: Props) => {
   return (
     <div className=" space-y-4">
       <h3 className=" font-bold text-3xl">{title}</h3>

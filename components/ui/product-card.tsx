@@ -1,17 +1,24 @@
 "use client"
-
 import { Product } from "@/types"
 import Image from "next/image"
 import { IconButton } from "./icon-button"
 import { Expand, ShoppingCart } from "lucide-react"
 import { Currency } from "./currency"
+import { useRouter } from "next/navigation"
 
 type Props = {
   data: Product
 }
 export const ProductCard = ({ data }: Props) => {
+  const router = useRouter()
+  const handelOnclick = () => {
+    router.push(`product/${data?.id}`)
+  }
   return (
-    <div className=" bg-white group cursor-pointer rounded-xl border p-3 space-y-3">
+    <div
+      onClick={handelOnclick}
+      className=" bg-white group cursor-pointer rounded-xl border p-3 space-y-3"
+    >
       <div className=" aspect-square rounded-md relative ">
         <Image
           className=" aspect-square rounded-md object-cover"
