@@ -1,12 +1,17 @@
+"use client"
 import { Product } from "@/types"
 import { Currency } from "./ui/currency"
 import Button from "./ui/button"
 import { ShoppingCart } from "lucide-react"
+import useCart from "@/hooks/use-cart"
+import { MouseEventHandler } from "react"
 
 type Props = {
   data: Product
 }
 export const ProductInfo = ({ data }: Props) => {
+  const cart = useCart()
+
   return (
     <div>
       <h1 className=" text-3xl font-bold text-gray-900">{data.name}</h1>
@@ -31,7 +36,10 @@ export const ProductInfo = ({ data }: Props) => {
           </div>
         </div>
         <div className="mt-4 flex items-center gap-x-3">
-          <Button className="flex justify-center items-center gap-2 w-full sm:w-fit">
+          <Button
+            onClick={() => cart.addItem(data)}
+            className="flex justify-center items-center gap-2 w-full sm:w-fit"
+          >
             Add to cart
             <ShoppingCart />
           </Button>

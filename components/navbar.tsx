@@ -4,6 +4,8 @@ import { MainNav } from "./main-nav"
 import getCategories from "@/actions/get-categories"
 import { NavAction } from "./nav-action"
 
+export const revalidate = 0
+
 type Props = {}
 export const Navbar = async ({}: Props) => {
   const categories = await getCategories()
