@@ -10,7 +10,7 @@ type Props = {
     productid: string
   }
 }
-export const ProductPage = async ({ params }: Props) => {
+const ProductPage = async ({ params }: Props) => {
   console.log(params.productid)
   const product = await getProduct(params.productid)
   const suggestedProducts = await getProducts({
