@@ -32,7 +32,7 @@ export const Summary = ({}: Props) => {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/paytabs/create-payment`,
         {
-          productIds: items.map((item) => item.id),
+          productIds: [...items.map((item) => item.id)],
           callback: `${process.env.NEXT_PUBLIC_API_URL}/paytabs/callback`,
           return: `${process.env.NEXT_PUBLIC_RETURN_URL}`,
         },
