@@ -17,7 +17,7 @@ export const ProductCard = ({ data }: Props) => {
   const cart = useCart()
   const router = useRouter()
   const handelOnclick = () => {
-    router.push(`product/${data?.id}`)
+    router.push(`/product/${data?.id}`)
   }
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
