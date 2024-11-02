@@ -2,17 +2,19 @@
 import { cn } from "@/lib/utils"
 import { Category } from "@/types"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 
 type Props = {
   data: Category[]
 }
 export const MainNav = ({ data }: Props) => {
+  const params = useParams()
   const pathName = usePathname()
+  const base = !!params.storeid ? `/${params.storeid}/category` : `/category`
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
+    href: `${base}/${route.id}`,
     label: route.name,
-    active: pathName == `/category/${route.id}`,
+    active: pathName == `${base}/${route.id}`,
   }))
 
   return (

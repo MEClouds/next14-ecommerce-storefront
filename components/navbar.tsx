@@ -6,9 +6,10 @@ import { NavAction } from "./nav-action"
 
 export const revalidate = 0
 
-type Props = {}
-export const Navbar = async ({}: Props) => {
-  const categories = await getCategories()
+type Props = { params: { storeid?: string } }
+export const Navbar = async ({ params }: Props) => {
+  const categories = await getCategories(params.storeid)
+  console.log("this is " + params.storeid)
   return (
     <div className="border-b">
       <Container>

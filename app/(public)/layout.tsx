@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Urbanist } from "next/font/google"
-import "./globals.css"
+import "../globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import ModalProvider from "@/provider/modal-provider"
@@ -13,17 +13,17 @@ export const metadata: Metadata = {
   description: "Store",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+type props = {
+  children: Readonly<React.ReactNode>
+  params: { storeid?: string }
+}
+export default function RootLayout({ children, params }: props) {
   return (
     <html lang="en">
       <body className={font.className}>
         <ModalProvider />
         <ToastProvider />
-        <Navbar />
+        <Navbar params={params} />
         <main className="mt-12">{children}</main>
         <Footer />
       </body>

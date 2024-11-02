@@ -1,10 +1,15 @@
 import { Category } from "@/types"
 
-const url = `${process.env.NEXT_PUBLIC_API_URL}/categories`
+const getCategories = async (storeid?: string): Promise<Category[]> => {
+  if (!!storeid) {
+    const urlLink = `${process.env.NEXT_PUBLIC_API}/${storeid}/categories`
+    console.log("This should be work" + urlLink)
+    const res = await fetch(urlLink)
+    return res.json()
+  }
 
-const getCategories = async (): Promise<Category[]> => {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/categories`
   const res = await fetch(url)
-
   return res.json()
 }
 

@@ -8,11 +8,12 @@ import { Container } from "@/components/ui/container"
 type Props = {
   params: {
     productid: string
+    storeid?: string
   }
 }
 const ProductPage = async ({ params }: Props) => {
   console.log(params.productid)
-  const product = await getProduct(params.productid)
+  const product = await getProduct(params.productid, params.storeid)
   const suggestedProducts = await getProducts({
     categoryId: product.category.id,
   })

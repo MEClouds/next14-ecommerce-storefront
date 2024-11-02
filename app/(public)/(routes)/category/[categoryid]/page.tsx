@@ -11,23 +11,26 @@ import MobileFilters from "./components/mobile-filter"
 
 export const revalidate = 0
 type Props = {
-  params: { categoryid: string }
+  params: { categoryid: string; storeid?: string }
   searchParams: {
     colorId: string
     sizeId: string
   }
 }
 const Home = async ({ params, searchParams }: Props) => {
-  const category = await getCategory(params.categoryid)
-  const billboards = await getBillboard(category.billboardId)
-  const sizes = await getSizes()
-  const colors = await getColors()
-  const products = await getProducts({
-    isFeatured: true,
-    categoryId: category.id,
-    colorId: searchParams.colorId,
-    sizeId: searchParams.sizeId,
-  })
+  const category = await getCategory(params.categoryid, params.storeid)
+  const billboards = await getBillboard(category.billboardId, params.storeid)
+  const sizes = await getSizes(params.storeid)
+  const colors = await getColors(params.storeid)
+  const products = await getProducts(
+    {
+      isFeatured: true,
+      categoryId: category.id,
+      colorId: searchParams.colorId,
+      sizeId: searchParams.sizeId,
+    },
+    params.storeid
+  )
   return (
     <Container>
       <div className="gap-y-8 pb-8">
